@@ -28,7 +28,7 @@ const Home = async () => {
             </h1>
 
             <p className="mt-6">
-              Powerful, self-serve product and growth analytics to help you convert, engage, and retain more.
+              Smart shopping starts here. Effortlessly track prices, monitor stock availability, and receive instant alerts so you never miss a deal again.
             </p>
 
              <Searchbar />
