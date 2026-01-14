@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+PriSync 🔍📉
 
-## Getting Started
+Smart E‑commerce Price Tracking & Product Intelligence Platform
 
-First, run the development server:
+PriSync is a modern web scraping and price‑monitoring application built with Next.js 16 and Bright Data’s Web Unlocker. It helps users make informed purchasing and business decisions by tracking e‑commerce products (such as Amazon listings), notifying users when prices drop, and alerting competitors when products go out of stock — all powered by automated cron jobs.
 
-```bash
+Designed with scalability, clean architecture, and reusability in mind, PriSync demonstrates a production‑ready approach to web scraping, data persistence, and automated notifications.
+
+🌟 Key Capabilities
+
+📉 Track product price changes in real time
+
+📦 Monitor stock availability
+
+📬 Automated email alerts for price drops & restocks
+
+⏱️ Scheduled scraping via cron jobs
+
+🧱 Clean, reusable, and scalable code architecture
+
+⚙️ Tech Stack
+
+Framework: Next.js 16
+
+Scraping Infrastructure: Bright Data (Web Unlocker)
+
+HTML Parsing: Cheerio
+
+Email Service: Nodemailer
+
+Database: MongoDB
+
+UI Components: Headless UI
+
+Styling: Tailwind CSS
+
+🔗 Bright Data: https://brdta.com/
+
+🔋 Features
+
+🖼️ User Interface
+
+Header with Carousel – Visually engaging hero section highlighting key benefits
+
+Responsive Design – Optimized for all screen sizes
+
+🔎 Product Scraping
+
+Amazon Product Scraping – Paste a product URL to fetch live data
+
+Scraped Products Dashboard – View all tracked products at a glance
+
+Detailed Product Pages – Displays product image, title, price history, stock status, and metadata
+
+🔔 Tracking & Alerts
+
+Track Product Modal – Users opt‑in by providing an email address
+
+Email Notifications – Alerts for:
+
+Price drops
+
+Back‑in‑stock updates
+
+Lowest price reached
+
+⚙️ Automation
+
+Cron Jobs – Periodic scraping to keep product data fresh
+
+Background Jobs – Automated monitoring without manual input
+
+🤸 Quick Start
+
+Follow the steps below to run PriSync locally.
+
+✅ Prerequisites
+
+Ensure you have the following installed:
+
+Git
+
+Node.js (18+ recommended)
+
+npm
+
+📥 Clone the Repository
+
+git clone https://github.com/M-tech-cmd/PriSync.git
+
+📦 Install Dependencies
+
+npm install
+
+🔐 Environment Variables
+
+Create a .env file in the project root and add the following:
+
+# SCRAPER
+BRIGHT_DATA_USERNAME=
+BRIGHT_DATA_PASSWORD=
+
+# DATABASE
+MONGODB_URI=
+
+# EMAIL (OUTLOOK)
+EMAIL_USER=
+EMAIL_PASS=
+
+Populate these values with your own credentials.
+
+▶️ Run the Development Server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🚀 Production‑Ready Highlights
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Modular and maintainable architecture
 
-## Learn More
+Secure scraping via proxy‑based infrastructure
 
-To learn more about Next.js, take a look at the following resources:
+Scalable background automation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Real‑world e‑commerce use cases
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+PriSync is suitable for price tracking tools, competitor monitoring platforms, and market intelligence systems.
 
-## Deploy on Vercel
+👨‍💻 Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+M-tech-cmdFull‑Stack Developer | Web Scraping & SaaS Builder
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
