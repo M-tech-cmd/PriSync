@@ -43,7 +43,7 @@ export async function GET(request: Request) {
         const updatedProduct = await Product.findOneAndUpdate(
           { url: product.url },
           product,
-          { new: true } // Returns the document AFTER update
+          { new: true } 
         );
 
         // ======================== 2 CHECK STATUS & SEND EMAIL
@@ -52,12 +52,12 @@ export async function GET(request: Request) {
           currentProduct
         );
 
-        // FIX: Ensure updatedProduct is not null before accessing properties
-        if (emailNotifType && updatedProduct && updatedProduct.users.length > 0) {
+        // Ensure updatedProduct is not null and has users
+        if (emailNotifType && updatedProduct && updatedProduct.users?.length > 0) {
           const productInfo = {
             title: updatedProduct.title,
             url: updatedProduct.url,
-            image: updatedProduct.image, // Fixed: Property now exists
+            image: updatedProduct.image, // FIXED: Required property
           };
 
           const emailContent = await generateEmailBody(productInfo, emailNotifType);
