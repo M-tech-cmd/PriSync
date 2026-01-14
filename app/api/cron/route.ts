@@ -56,14 +56,19 @@ export async function GET(request: Request) {
         );
 
         if (emailNotifType && updatedProduct.users.length > 0) {
+          // FIXED: Included the image property here
           const productInfo = {
             title: updatedProduct.title,
             url: updatedProduct.url,
+            image: updatedProduct.image, 
           };
+
           // Construct emailContent
           const emailContent = await generateEmailBody(productInfo, emailNotifType);
+
           // Get array of user emails
           const userEmails = updatedProduct.users.map((user: any) => user.email);
+
           // Send email notification
           await sendEmail(emailContent, userEmails);
         }
