@@ -13,14 +13,20 @@ export async function scrapeAmazonProduct(url: string) {
   const port = 22225;
   const session_id = (1000000 * Math.random()) | 0;
 
+  // FIXED: Axios requires the proxy settings in a specific format
   const options = {
-    auth: {
-      username: `${username}-session-${session_id}`,
-      password,
+    proxy: {
+      host: 'brd.superproxy.io',
+      port,
+      auth: {
+        username: `${username}-session-${session_id}`,
+        password,
+      },
     },
-    host: 'brd.superproxy.io',
-    port,
-    rejectUnauthorized: false,
+    // Adding a User-Agent header helps avoid blocks
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
+    }
   }
 
   try {
@@ -30,6 +36,10 @@ export async function scrapeAmazonProduct(url: string) {
 
     // Extract the product title
     const title = $('#productTitle').text().trim();
+    
+    // If no title, it means Amazon blocked the request or the selector changed
+    if(!title) return null;
+
     const currentPrice = extractPrice(
       $('.priceToPay span.a-price-whole'),
       $('.a.size.base.a-color-price'),
@@ -69,7 +79,7 @@ export async function scrapeAmazonProduct(url: string) {
       priceHistory: [],
       discountRate: Number(discountRate),
       category: 'category',
-      reviewsCount:100,
+      reviewsCount: 100,
       stars: 4.5,
       isOutOfStock: outOfStock,
       description,
@@ -80,6 +90,7 @@ export async function scrapeAmazonProduct(url: string) {
 
     return data;
   } catch (error: any) {
-    console.log(error);
+    console.error(`Scraper error: ${error.message}`);
+    return null;
   }
 }

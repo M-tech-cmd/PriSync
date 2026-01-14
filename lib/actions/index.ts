@@ -12,7 +12,8 @@ export async function scrapeAndStoreProduct(productUrl: string) {
   if(!productUrl) return;
 
   try {
-    connectToDB();
+    // CRITICAL: You MUST await the connection on Vercel
+    await connectToDB();
 
     const scrapedProduct = await scrapeAmazonProduct(productUrl);
 
@@ -44,6 +45,9 @@ export async function scrapeAndStoreProduct(productUrl: string) {
     );
 
     revalidatePath(`/products/${newProduct._id}`);
+    
+    // Convert to plain object for Next.js Server Actions
+    return JSON.parse(JSON.stringify(newProduct));
   } catch (error: any) {
     throw new Error(`Failed to create/update product: ${error.message}`)
   }
@@ -51,13 +55,13 @@ export async function scrapeAndStoreProduct(productUrl: string) {
 
 export async function getProductById(productId: string) {
   try {
-    connectToDB();
+    await connectToDB(); // Added await
 
     const product = await Product.findOne({ _id: productId });
 
     if(!product) return null;
 
-    return product;
+    return JSON.parse(JSON.stringify(product));
   } catch (error) {
     console.log(error);
   }
@@ -65,11 +69,11 @@ export async function getProductById(productId: string) {
 
 export async function getAllProducts() {
   try {
-    connectToDB();
+    await connectToDB(); // Added await
 
     const products = await Product.find();
 
-    return products;
+    return JSON.parse(JSON.stringify(products));
   } catch (error) {
     console.log(error);
   }
@@ -77,7 +81,7 @@ export async function getAllProducts() {
 
 export async function getSimilarProducts(productId: string) {
   try {
-    connectToDB();
+    await connectToDB(); // Added await
 
     const currentProduct = await Product.findById(productId);
 
@@ -87,7 +91,7 @@ export async function getSimilarProducts(productId: string) {
       _id: { $ne: productId },
     }).limit(3);
 
-    return similarProducts;
+    return JSON.parse(JSON.stringify(similarProducts));
   } catch (error) {
     console.log(error);
   }
@@ -95,6 +99,8 @@ export async function getSimilarProducts(productId: string) {
 
 export async function addUserEmailToProduct(productId: string, userEmail: string) {
   try {
+    await connectToDB(); // Added await
+
     const product = await Product.findById(productId);
 
     if(!product) return;
