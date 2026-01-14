@@ -137,3 +137,11 @@ PriSync is suitable for **price tracking tools, competitor monitoring platforms,
 
 **M-tech-cmd**
 Full‑Stack Developer | Web Scraping & SaaS Builder
+
+
+![image alt](https://github.com/M-tech-cmd/PriSync/blob/main/public/assets/images/preview1.png)
+![image alt](https://github.com/M-tech-cmd/PriSync/blob/main/public/assets/images/preview2.png)
+![image alt](https://github.com/M-tech-cmd/PriSync/blob/main/public/assets/images/preview3.png)
+![image alt](https://github.com/M-tech-cmd/PriSync/blob/main/public/assets/images/preview4.png)
+![image alt](https://github.com/M-tech-cmd/PriSync/blob/main/public/assets/images/preview5.png)
+![image alt](https://github.com/M-tech-cmd/PriSync/blob/main/public/assets/images/preview6.png)
