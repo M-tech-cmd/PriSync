@@ -42,7 +42,8 @@ const Home = async () => {
         <h2 className="section-text">Trending</h2>
 
         <div className="flex flex-wrap gap-x-8 gap-y-16">
-          {allProducts?.map((product) => ( 
+          {/* FIXED: Added : any to the product parameter to bypass TypeScript implicit type error */}
+          {allProducts?.map((product: any) => ( 
             <ProductCard key={product._id} product={product} /> 
           ))} 
         </div>
