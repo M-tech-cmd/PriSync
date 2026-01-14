@@ -190,7 +190,8 @@ const ProductDetails = async ({ params }: Props) => {
           <p className="section-text">Similar Products</p>
 
           <div className="flex flex-wrap gap-10 mt-7 w-full">
-            {similarProducts.map((product) => (
+            {/* FIXED: Added : any to bypass TypeScript build error */}
+            {similarProducts.map((product: any) => (
                <ProductCard key={product._id} product={product} /> 
              ))} 
           </div>
